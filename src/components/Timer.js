@@ -10,9 +10,9 @@ function Timer() {
   let [seconds,secondsSet] = useState();
   let [days,daysSet] = useState();
   let [daysList,daysListSet] = useState(["일","월","화","수","목","금","토"]);
-
   //사이트 작업시 작업자가 필요한 이벤트나 기능구현을 하고 싶다? side effect
   useEffect(()=>{
+
     //컴포넌트가 로딩이 되었을 때 (장착되었을 때 app.js에) mount
     //1초마다 한번씩 현재시간을 갱신해서 화면에 보여주는 작업
     let autoTimer = setInterval(()=>{
@@ -41,9 +41,16 @@ function Timer() {
         <div className="year">{year}년</div>
         <div className="month">{month}월</div>
         <div className="date">{date}일</div>
-        <div className="hours">{hours}시</div>
-        <div className="minuts">{minuts}분</div>
-        <div className="seconds">{seconds}초</div>
+        <div className="hours">{
+          (hours < 10)? "0"+hours : hours
+        }시</div>
+        <div className="minuts">{
+          (minuts < 10)? "0"+minuts : minuts
+        }분</div>
+        <div className="seconds">
+        {
+          (seconds < 10)? "0"+seconds : seconds
+        }초</div>
         <div className="days">{daysList[days]}요일</div>
     </div>
   )

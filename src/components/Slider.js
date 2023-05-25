@@ -13,22 +13,25 @@ function Slider() {
   //useEffect구간이 재호출 됩니다. (여러번 호출되기 때문에)
 
   useEffect(()=>{
-     let autoSlide = setInterval(()=>{
-        if(sNum === 2){
-            sNumSet(0); //스테이트값 변경함수 호출해서 데이터 전달
+     if(toggle){
+        let autoSlide = setInterval(()=>{
+            if(sNum === 2){
+                sNumSet(0); //스테이트값 변경함수 호출해서 데이터 전달
+            }
+            else{
+                sNumSet(++sNum); //1씩 증가
+            }
+        },3000)
+        //여기가 바로 자동실행 멈추게 하는 구간
+        return()=>{
+            clearInterval(autoSlide);
         }
-        else{
-            sNumSet(++sNum); //1씩 증가
-        }
-     },3000)
-     //여기가 바로 자동실행 멈추게 하는 구간
-     return()=>{
-        clearInterval(autoSlide);
-     }
+    }
+
   })
 
   return (
-    <div id="slider">
+    <div id="slider" onMouseEnter={()=>{toggleSet(false)}}  onMouseLeave={()=>{toggleSet(true)}}>
         <div className='view' style={{marginLeft:(sNum * -100) + "%"}}>
             <div>화면1</div>
             <div>화면2</div>
