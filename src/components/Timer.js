@@ -23,16 +23,15 @@ function Timer() {
         hoursSet(dateTest.getHours()); //시
         minutsSet(dateTest.getMinutes()); //분
         secondsSet(dateTest.getSeconds()); //초
-        daysSet(dateTest.getDay()); 
+        daysSet(dateTest.getDay());
         //요일 -> 정수값 -> 해당 정수값으로 배열에 있는 순번과 매칭되는 문자열을 꺼내와야함
     },1000);
    
     return()=>{
+        clearInterval(autoTimer);
          //컴포넌트가 제거가 되었을 때  unmount 
          // window에 이벤트가 걸려있을 때 제거하는 용도
-         // 자동실행함수 setInterval() 를 멈추게 하는 용도
-         
-      
+         // 자동실행함수 setInterval() 를 멈추게 하는 용도    
     }
    
   })
